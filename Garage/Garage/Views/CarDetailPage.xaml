@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Garage.Views.CarDetailPage"
+             Title="{Binding Title}">
+	<StackLayout Spacing="20" Padding="15">
+		<Label Text="{Binding Item.Name}" FontSize="Medium"/>
+        <Label Text="{Binding Item.Year}" FontSize="Small"/>
+        <Label Text="{Binding Item.Vin}" FontSize="Small"/>
+        <Label Text="{Binding Item.Description}" FontSize="Small"/>
+    </StackLayout>
+</ContentPage>

@@ -11,31 +11,31 @@ using Garage.Services;
 
 namespace Garage.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class CarsViewModel : BaseViewModel
     {
         /// <summary>
         /// Get the azure service instance
         /// </summary>
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<Car> DataStore => DependencyService.Get<IDataStore<Car>>();
 
-        public ObservableRangeCollection<Item> Items { get; set; }
+        public ObservableRangeCollection<Car> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        public ItemsViewModel()
+        public CarsViewModel()
         {
-            Title = "Browse";
-            Items = new ObservableRangeCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            Title = "Гараж";
+            Items = new ObservableRangeCollection<Car>();
+            LoadItemsCommand = new Command(async () => await ExecuteLoadCarsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<EditCarPage, Car>(this, "AddCar", async (obj, item) =>
             {
-                var _item = item as Item;
+                var _item = item as Car;
                 Items.Add(_item);
                 await DataStore.AddItemAsync(_item);
             });
         }
 
-        async Task ExecuteLoadItemsCommand()
+        async Task ExecuteLoadCarsCommand()
         {
             if (IsBusy)
                 return;

@@ -21,14 +21,14 @@ namespace Garage
             {
                 Children =
                 {
-                    new NavigationPage(new ItemsPage())
+                    new NavigationPage(new CarsPage())
                     {
-                        Title = "Browse",
+                        Title = "Гараж",
                         Icon = Device.OnPlatform("tab_feed.png",null,null)
                     },
                     new NavigationPage(new AboutPage())
                     {
-                        Title = "About",
+                        Title = "О программе",
                         Icon = Device.OnPlatform("tab_about.png",null,null)
                     },
                 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Garage.Views.EditCarPage"
+		Title="Новая машина">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Text="Сохранить" Clicked="Save_Clicked" />
+	</ContentPage.ToolbarItems>
+	<ContentPage.Content>
+		<StackLayout Spacing="20" Padding="15">
+			<Label Text="Название" FontSize="Medium" />
+			<Entry Text="{Binding Item.Name}" FontSize="Small" />
+			<Label Text="VIN код" FontSize="Medium" />
+			<Editor Text="{Binding Item.Vin}" FontSize="Small" Margin="0" />
+            <Label Text="Год" FontSize="Medium" />
+            <Editor Text="{Binding Item.Year}" FontSize="Small" Margin="0" />
+            <Label Text="Описание" FontSize="Medium" />
+            <Editor Text="{Binding Item.Description}" FontSize="Small" Margin="0" />
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>
