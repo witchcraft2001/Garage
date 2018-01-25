@@ -9,9 +9,9 @@
 			<Label Text="Название" FontSize="Medium" />
 			<Entry Text="{Binding Item.Name}" FontSize="Small" />
 			<Label Text="VIN код" FontSize="Medium" />
-			<Editor Text="{Binding Item.Vin}" FontSize="Small" Margin="0" />
+			<Entry Text="{Binding Item.Vin}" FontSize="Small" Margin="0" />
             <Label Text="Год" FontSize="Medium" />
-            <Editor Text="{Binding Item.Year}" FontSize="Small" Margin="0" />
+            <Entry Text="{Binding Item.Year}" FontSize="Small" Margin="0" Keyboard="Numeric"/>
             <Label Text="Описание" FontSize="Medium" />
             <Editor Text="{Binding Item.Description}" FontSize="Small" Margin="0" />
         </StackLayout>
