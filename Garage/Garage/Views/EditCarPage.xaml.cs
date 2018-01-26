@@ -26,7 +26,7 @@ namespace Garage.Views
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddCar", Item);
+            MessagingCenter.Send(this, "EditCar", Item);
             await Navigation.PopToRootAsync();
         }
     }

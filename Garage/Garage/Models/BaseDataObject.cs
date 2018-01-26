@@ -1,5 +1,6 @@
 ﻿using System;
 using Garage.Helpers;
+using SQLite;
 
 namespace Garage.Models
 {
@@ -7,13 +8,15 @@ namespace Garage.Models
     {
         public BaseDataObject()
         {
-            Id = Guid.NewGuid().ToString();
+            Id = 0;
+            CreatedAt = DateTimeOffset.Now;
         }
 
         /// <summary>
         /// Id for item
         /// </summary>
-        public string Id { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
 
         /// <summary>
         /// Azure created at time stamp
@@ -23,11 +26,7 @@ namespace Garage.Models
         /// <summary>
         /// Azure UpdateAt timestamp for online/offline sync
         /// </summary>
-        public DateTimeOffset UpdatedAt { get; set; }
+        public DateTimeOffset ChangedAt { get; set; }
 
-        /// <summary>
-        /// Azure version for online/offline sync
-        /// </summary>
-        public string AzureVersion { get; set; }
     }
 }

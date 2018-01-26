@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
+using System.Linq;
 using Garage.Helpers;
 using Garage.Models;
 using Garage.Views;
 
 using Xamarin.Forms;
 using Garage.Services;
+using Garage.DB;
+using System.Collections.ObjectModel;
 
 namespace Garage.ViewModels
 {
@@ -16,25 +18,44 @@ namespace Garage.ViewModels
         /// <summary>
         /// Get the azure service instance
         /// </summary>
-        public IDataStore<Car> DataStore => DependencyService.Get<IDataStore<Car>>();
+        //public IDataStore<Car> DataStore => DependencyService.Get<IDataStore<Car>>();
+        private DbContext db = new DbContext();
 
-        public ObservableRangeCollection<Car> Items { get; set; }
+        private ObservableCollection<Car> items;
+
+        public ObservableCollection<Car> Items
+        {
+            get
+            {
+                if (items == null)
+                {
+                    items = new ObservableCollection<Car>();
+                }
+                return items;
+            }
+            set
+            {
+                items = value;
+                OnPropertyChanged("Items");
+            }
+        }
         public Command LoadItemsCommand { get; set; }
 
         public CarsViewModel()
         {
             Title = "Гараж";
-            Items = new ObservableRangeCollection<Car>();
+            Items = new ObservableCollection<Car>();
+            ExecuteLoadCarsCommand();
             LoadItemsCommand = new Command(async () => await ExecuteLoadCarsCommand());
 
-            MessagingCenter.Subscribe<EditCarPage, Car>(this, "AddCar", async (obj, item) =>
+            MessagingCenter.Subscribe<EditCarPage, Car>(this, "EditCar", async (obj, item) =>
             {
-                var _item = item as Car;
-                Items.Add(_item);
-                await DataStore.AddItemAsync(_item);
+                var car = item as Car;
+                db.SaveCar(car);
+                await ExecuteLoadCarsCommand();
             });
         }
-
+        
         async Task ExecuteLoadCarsCommand()
         {
             if (IsBusy)
@@ -44,9 +65,8 @@ namespace Garage.ViewModels
 
             try
             {
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
-                Items.ReplaceRange(items);
+                var items = await Task.Run(() => db.GetCars()).ConfigureAwait(false);
+                Items = new ObservableCollection<Car>(items);
             }
             catch (Exception ex)
             {

@@ -48,8 +48,9 @@ namespace Garage.Services
         public async Task<Item> GetItemAsync(string id)
         {
             await InitializeAsync();
-
-            return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
+            int _id;
+            Int32.TryParse(id, out _id);
+            return await Task.FromResult(items.FirstOrDefault(s => s.Id == _id));
         }
 
         public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
@@ -78,12 +79,12 @@ namespace Garage.Services
             items = new List<Item>();
             var _items = new List<Item>
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Buy some cat food", Description="The cats are hungry"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Learn F#", Description="Seems like a functional idea"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Learn to play guitar", Description="Noted"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Buy some new candles", Description="Pine and cranberry for that winter feel"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Complete holiday shopping", Description="Keep it a secret!"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Finish a todo list", Description="Done"},
+                new Item { Id = 1, Text = "Buy some cat food", Description="The cats are hungry"},
+                new Item { Id = 2, Text = "Learn F#", Description="Seems like a functional idea"},
+                new Item { Id = 3, Text = "Learn to play guitar", Description="Noted"},
+                new Item { Id = 4, Text = "Buy some new candles", Description="Pine and cranberry for that winter feel"},
+                new Item { Id = 5, Text = "Complete holiday shopping", Description="Keep it a secret!"},
+                new Item { Id = 6, Text = "Finish a todo list", Description="Done"},
             };
 
             foreach (Item item in _items)

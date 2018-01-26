@@ -1,15 +1,13 @@
-﻿namespace Garage.Models
+﻿using SQLite;
+
+namespace Garage.Models
 {
+    [Table("Cars")]
     public class Car : BaseDataObject
     {
-        int id;
-        public int Id
-        {
-            get { return id; }
-            set { SetProperty(ref id, value); }
-        }
-
         string name = string.Empty;
+        [NotNull]
+        [MaxLength(32)]
         public string Name
         {
             get { return name; }
@@ -24,6 +22,8 @@
         }
 
         string vin = string.Empty;
+
+        [MaxLength(17)]
         public string Vin
         {
             get { return vin; }
@@ -31,6 +31,8 @@
         }
 
         string description = string.Empty;
+
+        [MaxLength(128)]
         public string Description
         {
             get { return description; }
