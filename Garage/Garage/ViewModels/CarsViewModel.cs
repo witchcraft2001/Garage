@@ -18,10 +18,13 @@ namespace Garage.ViewModels
         /// <summary>
         /// Get the azure service instance
         /// </summary>
-        //public IDataStore<Car> DataStore => DependencyService.Get<IDataStore<Car>>();
         private DbContext db = new DbContext();
 
         private ObservableCollection<Car> items;
+
+        private Car selectedItem;
+
+        private CarsPage view;
 
         public ObservableCollection<Car> Items
         {
@@ -39,14 +42,30 @@ namespace Garage.ViewModels
                 OnPropertyChanged("Items");
             }
         }
-        public Command LoadItemsCommand { get; set; }
 
-        public CarsViewModel()
+        public Car SelectedItem
         {
+            get { return selectedItem; }
+            set
+            {
+                selectedItem = value;
+                OnPropertyChanged("SelectedItem");
+            }
+        }
+
+        public Command LoadItemsCommand { get; set; }
+        public Command EditCarCommand { get; set; }
+        public Command DetailCarCommand { get; set; }
+
+        public CarsViewModel(CarsPage view)
+        {
+            this.view = view;
             Title = "Гараж";
             Items = new ObservableCollection<Car>();
             ExecuteLoadCarsCommand();
             LoadItemsCommand = new Command(async () => await ExecuteLoadCarsCommand());
+            DetailCarCommand = new Command<Car>(c => DoDetailCarCommand(c));
+            EditCarCommand = new Command<Car>(c => DoEditCar(c));
 
             MessagingCenter.Subscribe<EditCarPage, Car>(this, "EditCar", async (obj, item) =>
             {
@@ -55,7 +74,18 @@ namespace Garage.ViewModels
                 await ExecuteLoadCarsCommand();
             });
         }
-        
+
+        private async void DoDetailCarCommand(Car item)
+        {
+            await view.Navigation.PushAsync(new CarDetailPage(new CarDetailViewModel(item)));
+            SelectedItem = null;
+        }
+
+        private void DoEditCar(Car item)
+        {
+            ;
+        }
+
         async Task ExecuteLoadCarsCommand()
         {
             if (IsBusy)

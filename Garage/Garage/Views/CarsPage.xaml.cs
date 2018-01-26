@@ -15,20 +15,9 @@ namespace Garage.Views
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new CarsViewModel();
+            BindingContext = viewModel = new CarsViewModel(this);
         }
 
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
-        {
-            var item = args.SelectedItem as Car;
-            if (item == null)
-                return;
-
-            await Navigation.PushAsync(new CarDetailPage(new CarDetailViewModel(item)));
-
-            // Manually deselect item
-            ItemsListView.SelectedItem = null;
-        }
 
         async void AddItem_Clicked(object sender, EventArgs e)
         {
