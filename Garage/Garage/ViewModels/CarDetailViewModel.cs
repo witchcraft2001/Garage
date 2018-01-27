@@ -10,12 +10,5 @@ namespace Garage.ViewModels
             Title = item.Name;
             Item = item;
         }
-
-        int quantity = 1;
-        public int Quantity
-        {
-            get { return quantity; }
-            set { SetProperty(ref quantity, value); }
-        }
     }
 }

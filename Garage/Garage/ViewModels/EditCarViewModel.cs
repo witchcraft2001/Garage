@@ -24,7 +24,7 @@ namespace Garage.ViewModels
 
         public EditCarViewModel(IEditCarPage view, Car item)
         {
-            this.Item = item;
+            Item = item;
             this.view = view;
             if (item.Id == 0)
             {
