@@ -6,6 +6,7 @@
 	<StackLayout Spacing="20" Padding="15">
 		<Label Text="{Binding Item.Name}" FontSize="Medium"/>
         <Label Text="{Binding Item.Year}" FontSize="Small"/>
+        <Label Text="{Binding Item.Mileage}" FontSize="Small"/>
         <Label Text="{Binding Item.Vin}" FontSize="Small"/>
         <Label Text="{Binding Item.Description}" FontSize="Small"/>
     </StackLayout>

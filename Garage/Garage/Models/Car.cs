@@ -21,6 +21,12 @@ namespace Garage.Models
             set { SetProperty(ref year, value); }
         }
 
+        long mileage;
+        public long Mileage {
+            get { return mileage; }
+            set { SetProperty(ref mileage, value); }
+        }
+
         string vin = string.Empty;
 
         [MaxLength(17)]

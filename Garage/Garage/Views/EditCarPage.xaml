@@ -10,6 +10,8 @@
 			<Entry Text="{Binding Item.Name}" FontSize="Small" />
 			<Label Text="VIN код" FontSize="Medium" />
 			<Entry Text="{Binding Item.Vin}" FontSize="Small" Margin="0" />
+            <Label Text="Пробег" FontSize="Medium" />
+            <Entry Text="{Binding Item.Mileage}" FontSize="Small" Margin="0" Keyboard="Numeric"/>
             <Label Text="Год" FontSize="Medium" />
             <Entry Text="{Binding Item.Year}" FontSize="Small" Margin="0" Keyboard="Numeric"/>
             <Label Text="Описание" FontSize="Medium" />
