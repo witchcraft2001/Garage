@@ -1,15 +1,13 @@
 ﻿using System;
 
 using Garage.Models;
-
+using Garage.ViewModels;
 using Xamarin.Forms;
 
 namespace Garage.Views
 {
-    public partial class EditCarPage : ContentPage
+    public partial class EditCarPage : ContentPage, IEditCarPage
     {
-        public Car Item { get; set; }
-
         public EditCarPage()
             :this(new Car { Name = "Название", Description = "Описание", Year = DateTime.Now.Year })
         {
@@ -18,16 +16,13 @@ namespace Garage.Views
         public EditCarPage(Car item)
         {
             InitializeComponent();
-
-            Item = item;
-
-            BindingContext = this;
+            
+            BindingContext = new EditCarViewModel(this, item);
         }
 
-        async void Save_Clicked(object sender, EventArgs e)
+        async void IEditCarPage.CloseView()
         {
-            MessagingCenter.Send(this, "EditCar", Item);
             await Navigation.PopToRootAsync();
-        }
+        }        
     }
 }

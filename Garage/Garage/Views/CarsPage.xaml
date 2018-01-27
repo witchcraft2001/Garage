@@ -40,8 +40,8 @@
                                    LineBreakMode="NoWrap"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    FontSize="13"/>
-                                <Button Command="{Binding EditCarCommand}"
-                                        CommandParameter="{Binding SelectedItem}" 
+                                <Button Command="{Binding Path=BindingContext.EditCarCommand, Source={x:Reference Name=ItemsListView}}"
+                                        CommandParameter="{Binding}"
                                         Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" 
                                         WidthRequest="48" HeightRequest="48" BackgroundColor="White" 
                                         BorderColor="Transparent" HorizontalOptions="End">

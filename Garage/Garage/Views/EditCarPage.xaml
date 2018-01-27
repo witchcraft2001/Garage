@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Garage.Views.EditCarPage"
-		Title="Новая машина">
+		Title="{Binding Title}">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Text="Сохранить" Clicked="Save_Clicked" />
+        <ToolbarItem Text="Сохранить" Command="{Binding SaveCommand}"/>
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
 		<StackLayout Spacing="20" Padding="15">

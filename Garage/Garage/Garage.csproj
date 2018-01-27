@@ -53,6 +53,7 @@
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CarDetailViewModel.cs" />
+    <Compile Include="ViewModels\EditCarViewModel.cs" />
     <Compile Include="ViewModels\ItemDetailViewModel.cs" />
     <Compile Include="ViewModels\CarsViewModel.cs" />
     <Compile Include="ViewModels\ItemsViewModel.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Views\CarDetailPage.xaml.cs">
       <DependentUpon>CarDetailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\IEditCarPage.cs" />
     <Compile Include="Views\ItemDetailPage.xaml.cs">
       <DependentUpon>ItemDetailPage.xaml</DependentUpon>
     </Compile>

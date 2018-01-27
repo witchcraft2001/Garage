@@ -67,7 +67,7 @@ namespace Garage.ViewModels
             DetailCarCommand = new Command<Car>(c => DoDetailCarCommand(c));
             EditCarCommand = new Command<Car>(c => DoEditCar(c));
 
-            MessagingCenter.Subscribe<EditCarPage, Car>(this, "EditCar", async (obj, item) =>
+            MessagingCenter.Subscribe<EditCarViewModel, Car>(this, "EditCar", async (obj, item) =>
             {
                 var car = item as Car;
                 db.SaveCar(car);
@@ -81,9 +81,10 @@ namespace Garage.ViewModels
             SelectedItem = null;
         }
 
-        private void DoEditCar(Car item)
+        private async void DoEditCar(Car item)
         {
-            ;
+            await view.Navigation.PushAsync(new EditCarPage(item));
+            SelectedItem = null;
         }
 
         async Task ExecuteLoadCarsCommand()
