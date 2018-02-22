@@ -17,22 +17,28 @@ namespace Garage
 
         public static void SetMainPage()
         {
-            Current.MainPage = new TabbedPage
+            Current.MainPage = new NavigationPage(new CarsPage())
             {
-                Children =
-                {
-                    new NavigationPage(new CarsPage())
-                    {
-                        Title = "Гараж",
-                        Icon = Device.OnPlatform("tab_feed.png",null,null)
-                    },
-                    new NavigationPage(new AboutPage())
-                    {
-                        Title = "О программе",
-                        Icon = Device.OnPlatform("tab_about.png",null,null)
-                    },
-                }
+                Title = "Гараж",
+                Icon = Device.OnPlatform("tab_feed.png", null, null)
             };
+
+            //    new TabbedPage
+            //{
+            //    Children =
+            //    {
+            //        new NavigationPage(new CarsPage())
+            //        {
+            //            Title = "Гараж",
+            //            Icon = Device.OnPlatform("tab_feed.png",null,null)
+            //        },
+            //        new NavigationPage(new AboutPage())
+            //        {
+            //            Title = "О программе",
+            //            Icon = Device.OnPlatform("tab_about.png",null,null)
+            //        },
+            //    }
+            //};
         }
     }
 }
