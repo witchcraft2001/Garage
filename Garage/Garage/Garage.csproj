@@ -46,8 +46,9 @@
     <Compile Include="Interfaces\IDatabaseConnection.cs" />
     <Compile Include="Models\BaseDataObject.cs" />
     <Compile Include="Models\Car.cs" />
-    <Compile Include="Models\Expence.cs" />
-    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Fueling.cs" />
+    <Compile Include="Models\GasStation.cs" />
+    <Compile Include="Models\GasType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IDataStore.cs" />
     <Compile Include="Services\MockDataStore.cs" />
