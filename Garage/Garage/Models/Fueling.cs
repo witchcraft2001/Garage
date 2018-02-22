@@ -7,14 +7,35 @@ using System.Threading.Tasks;
 
 namespace Garage.Models
 {
-    [Table("Expences")]
-    public class Expence : BaseDataObject
+    [Table("Fuelings")]
+    public class Fueling : BaseDataObject
     {
+        bool fullTank;
+        public bool FullTank
+        {
+            get { return fullTank; }
+            set { SetProperty(ref fullTank, value); }
+        }
+
         DateTime added;
         public DateTime Added
         {
             get { return added; }
             set { SetProperty(ref added, value); }
+        }
+
+        double amount;
+        public double Amount
+        {
+            get { return amount; }
+            set { SetProperty(ref amount, value); }
+        }
+
+        double cost;
+        public double Cost
+        {
+            get { return cost; }
+            set { SetProperty(ref cost, value); }
         }
 
         long mileage;
